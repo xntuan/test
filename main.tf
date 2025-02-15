@@ -12,9 +12,19 @@ provider "google" {
   region = "us-west1"
 }
 
-resource "google_storage_bucket" "mybucket" {
+resource "google_storage_bucket" "mybucket" { 
     name = "my-terraform-bucket-04061988"
     location = "us-west1"
+  
+
+  versioning {
+    enabled = true
+  }
+
+  labels = {
+    environment = "student-lab"
+    managed_by = "terraform"
+  }
 }
 
 output "bucket_name" {
